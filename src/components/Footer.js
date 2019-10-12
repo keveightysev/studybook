@@ -33,7 +33,7 @@ const FooterStyle = styled.footer`
 	div {
 		display: flex;
 		width: 100%;
-		max-width: 1000px;
+		max-width: 1500px
 		margin: 0 auto;
 		justify-content: space-between;
 		align-items: center;

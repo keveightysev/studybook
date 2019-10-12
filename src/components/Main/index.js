@@ -35,14 +35,16 @@ const MainStyle = styled.main`
 const LandingStyle = styled.div`
     height: 90vh;
     background-image: url("${molecules}");
+    background-size: cover;
 
     div {
-        max-width: 1000px
+        max-width: 1500px
         margin: 0 auto;
 
         h2 {
             font-size: 6rem;
             width: 75%;
+            max-width: 660px
             margin-top: 150px;
             margin-left: 75px;
         }
@@ -55,10 +57,16 @@ const LandingStyle = styled.div`
         }
     
         form {
-            width: 75%;
+            width: 55%;
+            min-width: 500px;
             display: flex;
             justify-content: space-between;
             margin-left: 75px;
+
+            @media(max-width: 1150px) {
+                flex-wrap: wrap;
+            }
+
             input {
                 border: 1px solid #969797;
                 border-radius: 20px;
@@ -67,25 +75,41 @@ const LandingStyle = styled.div`
     
                 &:first-of-type {
                     width: 60%;
+
+                    @media(max-width: 1150px) {
+                        width: 75%;
+                    }
                 }
     
                 &:last-of-type {
                     width: 18%;
-                    text-align: center;
+                    min-width: 120px;
+                }
+
+                &[type=number]::-webkit-inner-spin-button, 
+                &[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                margin: 0; 
                 }
             }
     
             button {
                 width: 18%;
+                min-width: 120px;
                 font-size: 1.5rem;
                 text-transform: uppercase;
                 border-radius: 20px;
                 background: #223547;
+                padding: 10px;
                 color: #FFF;
                 transition: all 300ms ease;
     
                 &:hover {
                     background: #1ad9c4;
+                }
+
+                @media(max-width: 1150px) {
+                    margin-top: 20px;
                 }
             }
         }
