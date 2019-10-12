@@ -20,11 +20,12 @@ export default Header;
 
 const HeaderStyle = styled.header`
 	display: flex;
-	width: 100%;
+	width: 95%;
 	max-width: 1500px
-	margin: 0 auto;
+    margin: 0 auto;
+    padding: 20px 0;
 	justify-content: space-between;
-	align-items: center;
+    align-items: center;
 
 	nav {
 		width: 25%;
