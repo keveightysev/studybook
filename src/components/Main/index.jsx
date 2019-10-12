@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import Landing from './Landing';
+import Landing from "./Landing";
 
 const Main = () => {
   return (
@@ -14,6 +14,6 @@ const Main = () => {
 export default Main;
 
 const MainStyle = styled.main`
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
 `;

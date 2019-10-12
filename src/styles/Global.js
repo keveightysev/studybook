@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
-import gilroyExtraBold from '../assets/fonts/gilroy-extrabold.otf';
-import gilroyLight from '../assets/fonts/gilroy-light.otf';
+import gilroyExtraBold from "../assets/fonts/gilroy-extrabold.otf";
+import gilroyLight from "../assets/fonts/gilroy-light.otf";
 
 const Global = createGlobalStyle`
     @font-face {
@@ -33,6 +33,14 @@ const Global = createGlobalStyle`
     body {
         font-family: 'Gilroy Light', sans-serif;
     }
+
+    .hidden {
+        position: absolute;
+        left: -99999px;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+      }
 `;
 
 export default Global;

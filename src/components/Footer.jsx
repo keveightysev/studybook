@@ -14,11 +14,11 @@ const Footer = () => {
           <a href="#privacy">Privacy</a>
           <a href="#contact">Contact Us</a>
           <a href="#twitter">
-            Twitter
+            <span className="hidden">Twitter</span>
             <FaTwitter />
           </a>
           <a href="#facebook">
-            Facbeook
+            <span className="hidden">Facebook</span>
             <FaFacebookF />
           </a>
         </nav>
