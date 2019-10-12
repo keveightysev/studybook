@@ -1,0 +1,45 @@
+import React from 'react';
+import styled from 'styled-components';
+
+import logo from '../assets/img/logo.png';
+
+const Header = () => {
+	return (
+		<HeaderStyle>
+			<img src={logo} alt='Studybrook logo' />
+			<nav>
+				<a href='#find'>Find a Trial</a>
+				<a href='#about'>About</a>
+				<a href='#help'>Help</a>
+			</nav>
+		</HeaderStyle>
+	);
+};
+
+export default Header;
+
+const HeaderStyle = styled.header`
+	display: flex;
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+	justify-content: space-between;
+	align-items: center;
+
+	nav {
+		width: 25%;
+		display: flex;
+		justify-content: space-between;
+
+		a {
+			text-decoration: none;
+			font-size: 1.8rem;
+			color: #3f3f3f;
+			transition: all 300ms ease;
+
+			&:hover {
+				color: #1ad9c4;
+			}
+		}
+	}
+`;
