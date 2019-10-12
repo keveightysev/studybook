@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react';
+import PropTypes from 'prop-types';
 
 import { initialState, reducer } from './reducer';
 
@@ -10,4 +11,8 @@ export const Provider = ({ children }) => {
 	return (
 		<Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
 	);
+};
+
+Provider.propTypes = {
+	children: PropTypes.any,
 };

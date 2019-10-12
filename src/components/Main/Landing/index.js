@@ -11,8 +11,8 @@ const Landing = () => {
 			<div>
 				<h2>Looking for a clinical trial near you?</h2>
 				<p>
-					We'll help you break through the complex medical <br />
-					jargon and find a clinical study that you're eligible to join.
+					We&apos;ll help you break through the complex medical <br />
+					jargon and find a clinical study that you&apos;re eligible to join.
 				</p>
 				<Form />
 			</div>
