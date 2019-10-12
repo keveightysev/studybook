@@ -10,7 +10,7 @@ const Main = () => {
     <MainStyle>
       <Router>
         <Landing path="/" />
-        <Search path="/search" />
+        <Search path="search/*" />
       </Router>
     </MainStyle>
   );

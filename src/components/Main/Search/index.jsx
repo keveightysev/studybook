@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Router } from "@reach/router";
 
 import TravelDistance from "./TravelDistance";
 import Progress from "./Progress";
@@ -9,7 +10,9 @@ const Search = () => {
   return (
     <SearchStyle>
       <Progress />
-      <TravelDistance />
+      <Router>
+        <TravelDistance path="2" />
+      </Router>
       <TentativeResults />
     </SearchStyle>
   );
@@ -18,8 +21,13 @@ const Search = () => {
 export default Search;
 
 const SearchStyle = styled.main`
-  width: 50%;
-  margin: 0 auto;
+  width: 75%;
+  margin: 50px auto;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+
+  div {
+    width: 55%;
+  }
 `;

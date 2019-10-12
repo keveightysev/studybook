@@ -1,29 +1,36 @@
 import React from "react";
+import styled from "styled-components";
+
+import Radio from "./Radio";
 
 const TravelDistance = () => {
   return (
-    <div>
+    <Travel>
       <h2>How far are you willing to travel?</h2>
       <form>
-        <label htmlFor="twenty">
-          <input type="radio" id="twenty" name="distance" value="20" />
-          20 miles
-        </label>
-        <label htmlFor="fifty">
-          <input type="radio" id="fifty" name="distance" value="50" />
-          50 miles
-        </label>
-        <label htmlFor="hundred">
-          <input type="radio" id="hundred" name="distance" value="100" />
-          100 miles
-        </label>
-        <label htmlFor="anyDistance">
-          <input type="radio" id="anyDistance" name="distance" value="any" />
-          Any Distance
-        </label>
+        <Radio id="twenty" value="20" />
+        <Radio id="fifty" value="50" />
+        <Radio id="hundred" value="100" />
+        <Radio id="anyDistance" value="any" />
       </form>
-    </div>
+    </Travel>
   );
 };
 
 export default TravelDistance;
+
+const Travel = styled.section`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8rem;
+
+  h2 {
+    margin: 20px 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+`;
