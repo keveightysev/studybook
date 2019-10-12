@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Form = () => {
+	const [condition, setCondition] = useState('');
+	const [postal, setPostal] = useState('');
 	return (
 		<FormStyle>
-			<input type='text' placeholder='Medical Condition' />
-			<input type='number' placeholder='Postal Code' />
+			<input
+				type='text'
+				placeholder='Medical Condition'
+				value={condition}
+				onChange={e => setCondition(e.target.value)}
+			/>
+			<input
+				type='number'
+				placeholder='Postal Code'
+				value={postal}
+				onChange={e => setPostal(e.target.value)}
+			/>
 			<button>Find a Trial</button>
 		</FormStyle>
 	);
