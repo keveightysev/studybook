@@ -6,18 +6,19 @@ import molecules from '../../../assets/img/molecules.svg';
 import Form from './Form';
 
 const Landing = () => {
-	return (
-		<LandingStyle>
-			<div>
-				<h2>Looking for a clinical trial near you?</h2>
-				<p>
-					We&apos;ll help you break through the complex medical <br />
-					jargon and find a clinical study that you&apos;re eligible to join.
-				</p>
-				<Form />
-			</div>
-		</LandingStyle>
-	);
+  return (
+    <LandingStyle>
+      <div>
+        <h2>Looking for a clinical trial near you?</h2>
+        <p>
+          We&apos;ll help you break through the complex medical
+          <br />
+          jargon and find a clinical study that you&apos;re eligible to join.
+        </p>
+        <Form />
+      </div>
+    </LandingStyle>
+  );
 };
 
 export default Landing;

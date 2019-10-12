@@ -1,19 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import logo from '../assets/img/logo.png';
+import logo from "../assets/img/logo.png";
 
 const Header = () => {
-	return (
-		<HeaderStyle>
-			<img src={logo} alt='Studybrook logo' />
-			<nav>
-				<a href='#find'>Find a Trial</a>
-				<a href='#about'>About</a>
-				<a href='#help'>Help</a>
-			</nav>
-		</HeaderStyle>
-	);
+  return (
+    <HeaderStyle>
+      <img src={logo} alt="Studybrook logo" />
+      <nav>
+        <a href="#find">Find a Trial</a>
+        <a href="#about">About</a>
+        <a href="#help">Help</a>
+      </nav>
+    </HeaderStyle>
+  );
 };
 
 export default Header;

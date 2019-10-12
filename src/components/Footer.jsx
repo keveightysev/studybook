@@ -1,28 +1,30 @@
-import React from 'react';
-import { FaTwitter, FaFacebookF } from 'react-icons/fa';
-import styled from 'styled-components';
+import React from "react";
+import { FaTwitter, FaFacebookF } from "react-icons/fa";
+import styled from "styled-components";
 
-import logo from '../assets/img/logo.png';
+import logo from "../assets/img/logo.png";
 
 const Footer = () => {
-	return (
-		<FooterStyle>
-			<div>
-				<img src={logo} alt='Studybrook logo' />
-				<nav>
-					<a href='#terms'>Terms</a>
-					<a href='#privacy'>Privacy</a>
-					<a href='#contact'>Contact Us</a>
-					<a href='#twitter'>
-						<FaTwitter />
-					</a>
-					<a href='#facebook'>
-						<FaFacebookF />
-					</a>
-				</nav>
-			</div>
-		</FooterStyle>
-	);
+  return (
+    <FooterStyle>
+      <div>
+        <img src={logo} alt="Studybrook" />
+        <nav>
+          <a href="#terms">Terms</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#contact">Contact Us</a>
+          <a href="#twitter">
+            Twitter
+            <FaTwitter />
+          </a>
+          <a href="#facebook">
+            Facbeook
+            <FaFacebookF />
+          </a>
+        </nav>
+      </div>
+    </FooterStyle>
+  );
 };
 
 export default Footer;

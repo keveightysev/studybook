@@ -7,14 +7,14 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 
 function App() {
-	return (
-		<>
-			<Global />
-			<Header />
-			<Main />
-			<Footer />
-		</>
-	);
+  return (
+    <>
+      <Global />
+      <Header />
+      <Main />
+      <Footer />
+    </>
+  );
 }
 
 export default App;

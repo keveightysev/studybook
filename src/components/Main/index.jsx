@@ -4,16 +4,16 @@ import styled from 'styled-components';
 import Landing from './Landing';
 
 const Main = () => {
-	return (
-		<MainStyle>
-			<Landing />
-		</MainStyle>
-	);
+  return (
+    <MainStyle>
+      <Landing />
+    </MainStyle>
+  );
 };
 
 export default Main;
 
 const MainStyle = styled.main`
-	width: 95%;
-	margin: 0 auto;
+  width: 95%;
+  margin: 0 auto;
 `;
