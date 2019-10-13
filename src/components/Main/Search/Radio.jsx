@@ -7,12 +7,17 @@ const Radio = ({ id, value }) => {
     <RadioButton htmlFor={id}>
       <input
         type="radio"
-        id={id}
         name="distance"
         value={value}
+        id={id}
         aria-label={`${value} miles`}
       />
-      <div className="radio" />
+      <div
+        className="radio"
+        role="radio"
+        aria-checked="false"
+        aria-label={`${value} miles`}
+      />
       {value === "any" ? "Any distance" : `${value} miles`}
     </RadioButton>
   );
