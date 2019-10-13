@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
+import { Context } from "../../../context";
+
 const Age = () => {
+  const { state, dispatch } = useContext(Context);
+
+  const { age } = state;
+
+  const handleChange = e => {
+    const value = e.target.value ? Number(e.target.value) : "";
+    dispatch({
+      type: "UPDATE_INPUT",
+      payload: { name: e.target.id, value },
+    });
+  };
   return (
     <AgeStyle htmlFor="age">
       How old are you?
       <div>
-        <input type="number" id="age" />
+        <input
+          type="number"
+          id="age"
+          value={age}
+          onChange={e => handleChange(e)}
+        />
       </div>
     </AgeStyle>
   );

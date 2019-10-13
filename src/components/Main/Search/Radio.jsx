@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import { Context } from "../../../context";
+
 const Radio = ({ id, value }) => {
+  const { dispatch } = useContext(Context);
+
+  const handleClick = e => {
+    if (e.target.name) {
+      dispatch({ type: "UPDATE_INPUT", payload: { name: "distance", value } });
+    }
+  };
+
   return (
-    <RadioButton htmlFor={id}>
+    <RadioButton htmlFor={id} name="distance" onClick={e => handleClick(e)}>
       <input
         type="radio"
         name="distance"
@@ -12,12 +22,7 @@ const Radio = ({ id, value }) => {
         id={id}
         aria-label={`${value} miles`}
       />
-      <div
-        className="radio"
-        role="radio"
-        aria-checked="false"
-        aria-label={`${value} miles`}
-      />
+      <div className="radio" role="presentation" />
       {value === "any" ? "Any distance" : `${value} miles`}
     </RadioButton>
   );

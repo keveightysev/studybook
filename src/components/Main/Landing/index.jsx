@@ -1,11 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
 
-import molecules from '../../../assets/img/molecules.svg';
+import molecules from "../../../assets/img/molecules.svg";
 
-import Form from './Form';
+import Form from "./Form";
 
-const Landing = () => {
+const Landing = ({ navigate }) => {
   return (
     <LandingStyle>
       <div>
@@ -15,7 +16,7 @@ const Landing = () => {
           <br />
           jargon and find a clinical study that you&apos;re eligible to join.
         </p>
-        <Form />
+        <Form navigate={navigate} />
       </div>
     </LandingStyle>
   );
@@ -48,3 +49,11 @@ const LandingStyle = styled.div`
         }
     }
 `;
+
+Landing.defaultProps = {
+  navigate: () => {},
+};
+
+Landing.propTypes = {
+  navigate: PropTypes.func,
+};

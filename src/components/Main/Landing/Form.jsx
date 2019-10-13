@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
-const Form = () => {
-  const [condition, setCondition] = useState("");
-  const [postal, setPostal] = useState("");
+import { Context } from "../../../context";
+
+const Form = ({ navigate }) => {
+  const { state, dispatch } = useContext(Context);
+  const { condition, postalCode } = state;
+
+  const handleChange = e => {
+    dispatch({
+      type: "UPDATE_INPUT",
+      payload: { name: e.target.id, value: e.target.value },
+    });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (condition && postalCode) {
+      navigate("search/2");
+    }
+  };
+
   return (
-    <FormStyle>
+    <FormStyle onSubmit={e => handleSubmit(e)}>
       <label htmlFor="condition">
         <span className="hidden" role="definition">
           Medical Condition
@@ -15,7 +33,7 @@ const Form = () => {
           placeholder="Medical Condition"
           id="condition"
           value={condition}
-          onChange={e => setCondition(e.target.value)}
+          onChange={e => handleChange(e)}
         />
       </label>
       <label htmlFor="postal">
@@ -25,9 +43,9 @@ const Form = () => {
         <input
           type="number"
           placeholder="Postal Code"
-          id="postal"
-          value={postal}
-          onChange={e => setPostal(e.target.value)}
+          id="postalCode"
+          value={postalCode}
+          onChange={e => handleChange(e)}
         />
       </label>
       <button type="submit">Find a Trial</button>
@@ -98,3 +116,11 @@ const FormStyle = styled.form`
     }
   }
 `;
+
+Form.defaultProps = {
+  navigate: () => {},
+};
+
+Form.propTypes = {
+  navigate: PropTypes.func,
+};
