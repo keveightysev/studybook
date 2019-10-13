@@ -2,9 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Router } from "@reach/router";
 
-import TravelDistance from "./TravelDistance";
 import Progress from "./Progress";
 import TentativeResults from "./TentativeResults";
+
+import TravelDistance from "./TravelDistance";
+import Age from "./Age";
 
 const Search = () => {
   return (
@@ -12,6 +14,7 @@ const Search = () => {
       <Progress />
       <Router>
         <TravelDistance path="2" />
+        <Age path="3" />
       </Router>
       <TentativeResults />
     </SearchStyle>
