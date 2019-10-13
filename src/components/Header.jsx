@@ -6,7 +6,10 @@ import logo from "../assets/img/logo.png";
 const Header = () => {
   return (
     <HeaderStyle>
-      <img src={logo} alt="Studybrook logo" />
+      <a href="/">
+        <span className="hidden">&nbsp;</span>
+        <img src={logo} alt="Studybrook logo" />
+      </a>
       <nav>
         <a href="#find">Find a Trial</a>
         <a href="#about">About</a>

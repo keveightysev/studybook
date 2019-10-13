@@ -8,7 +8,10 @@ const Footer = () => {
   return (
     <FooterStyle>
       <div>
-        <img src={logo} alt="Studybrook" />
+        <a href="/">
+          <span className="hidden">&nbsp;</span>
+          <img src={logo} alt="Studybrook logo" />
+        </a>
         <nav>
           <a href="#terms">Terms</a>
           <a href="#privacy">Privacy</a>
