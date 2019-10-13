@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { FaAngleRight } from "react-icons/fa";
 import PropTypes from "prop-types";
 
+import { Context } from "../../../context";
+
 const TentativeResults = ({ step, navigate }) => {
+  const { state } = useContext(Context);
+
+  const { distance } = state;
+
   const handleClick = () => {
     const prevPage = Number(step) + 1;
     navigate(`${prevPage}`);
@@ -18,7 +24,7 @@ const TentativeResults = ({ step, navigate }) => {
   return (
     <Right>
       <ResultsHeader>212 trials found</ResultsHeader>
-      {step !== "3" ? (
+      {step !== "3" && distance ? (
         <NavArrow
           onClick={() => handleClick()}
           onKeyPress={e => handleKey(e)}

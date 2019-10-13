@@ -1,11 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import { Context } from "../../../context";
 
 const Radio = ({ id, value }) => {
-  const { dispatch } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
+
+  const radio = useRef(null);
+
+  const { distance } = state;
+
+  useEffect(() => {
+    if (distance === value) {
+      radio.current.checked = true;
+    }
+  }, [distance, value]);
 
   const handleClick = e => {
     if (e.target.name) {
@@ -21,6 +31,7 @@ const Radio = ({ id, value }) => {
         value={value}
         id={id}
         aria-label={`${value} miles`}
+        ref={radio}
       />
       <div className="radio" role="presentation" />
       {value === "any" ? "Any distance" : `${value} miles`}
