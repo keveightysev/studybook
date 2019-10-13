@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Router } from "@reach/router";
+import PropTypes from "prop-types";
 
 import Progress from "./Progress";
 import TentativeResults from "./TentativeResults";
@@ -8,15 +9,15 @@ import TentativeResults from "./TentativeResults";
 import TravelDistance from "./TravelDistance";
 import Age from "./Age";
 
-const Search = () => {
+const Search = ({ "*": step, navigate }) => {
   return (
     <SearchStyle>
-      <Progress />
+      <Progress step={step} navigate={navigate} />
       <Router>
         <TravelDistance path="2" />
         <Age path="3" />
       </Router>
-      <TentativeResults />
+      <TentativeResults step={step} navigate={navigate} />
     </SearchStyle>
   );
 };
@@ -34,3 +35,13 @@ const SearchStyle = styled.main`
     width: 55%;
   }
 `;
+
+Search.defaultProps = {
+  "*": "1",
+  navigate: () => {},
+};
+
+Search.propTypes = {
+  "*": PropTypes.string,
+  navigate: PropTypes.func,
+};
