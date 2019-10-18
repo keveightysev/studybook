@@ -34,6 +34,11 @@ const Global = createGlobalStyle`
         font-family: 'Gilroy Light', sans-serif;
     }
 
+    #root {
+        display: flex;
+        flex-direction: column;
+    }
+
     .hidden {
         position: absolute;
         left: -99999px;
