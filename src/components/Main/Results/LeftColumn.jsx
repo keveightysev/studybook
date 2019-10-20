@@ -1,17 +1,32 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
-const LeftColumn = () => {
+const LeftColumn = ({ navigate }) => {
+  const handleClick = e => {
+    e.preventDefault();
+    navigate("/search/1");
+  };
   return (
     <Column>
       <h2>12</h2>
       <p>trials found</p>
-      <button type="button">Try Another Search</button>
+      <button type="button" onClick={e => handleClick(e)}>
+        Try Another Search
+      </button>
     </Column>
   );
 };
 
 export default LeftColumn;
+
+LeftColumn.defaultProps = {
+  navigate: () => {},
+};
+
+LeftColumn.propTypes = {
+  navigate: PropTypes.func,
+};
 
 const Column = styled.aside`
   width: 15%;

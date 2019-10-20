@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { Router } from "@reach/router";
+import PropTypes from "prop-types";
 
 import LeftColumn from "./LeftColumn";
 import Listings from "./Listings";
 
-const Results = () => {
+const Results = ({ navigate }) => {
   return (
     <ResultsPage>
-      <LeftColumn />
+      <LeftColumn navigate={navigate} />
       <Router>
         <Listings path=":page" />
       </Router>
@@ -17,6 +18,14 @@ const Results = () => {
 };
 
 export default Results;
+
+Results.defaultProps = {
+  navigate: () => {},
+};
+
+Results.propTypes = {
+  navigate: PropTypes.func,
+};
 
 const ResultsPage = styled.main`
   display: flex;

@@ -22,7 +22,7 @@ const Listings = ({ page, navigate }) => {
         );
 
         const data = res.data.map(line => {
-          const newLine = { ...line, probability: line["Unnamed: 0"] };
+          const newLine = { ...line, id: line["Unnamed: 0"] };
           delete newLine["Unnamed: 0"];
           return newLine;
         });

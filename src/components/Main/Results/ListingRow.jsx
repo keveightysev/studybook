@@ -10,8 +10,13 @@ const ListingRow = ({
   state,
   country,
   overallStatus,
-  //   navigate,
+  key: id,
+  navigate,
 }) => {
+  const handleClick = e => {
+    e.preventDefault();
+    navigate(`/study/${id}`);
+  };
   return (
     <tr>
       <td>{condition}</td>
@@ -23,7 +28,9 @@ const ListingRow = ({
       </td>
       <Status status={overallStatus} />
       <td>
-        <button type="button">View Study</button>
+        <button type="button" onClick={e => handleClick(e)}>
+          View Study
+        </button>
       </td>
     </tr>
   );
@@ -32,7 +39,7 @@ const ListingRow = ({
 export default ListingRow;
 
 ListingRow.defaultProps = {
-  //   navigate: null,
+  navigate: null,
 };
 
 ListingRow.propTypes = {
@@ -42,5 +49,6 @@ ListingRow.propTypes = {
   state: PropTypes.string.isRequired,
   country: PropTypes.string.isRequired,
   overallStatus: PropTypes.string.isRequired,
-  //   navigate: PropTypes.func,
+  key: PropTypes.string.isRequired,
+  navigate: PropTypes.func,
 };

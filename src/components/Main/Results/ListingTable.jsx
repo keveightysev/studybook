@@ -29,7 +29,7 @@ const ListingTable = ({ navigate }) => {
               state: st,
               country,
               overall_status: overallStatus,
-              probability,
+              id,
             } = listing;
             return (
               <ListingRow
@@ -39,7 +39,7 @@ const ListingTable = ({ navigate }) => {
                 state={st}
                 country={country}
                 overallStatus={overallStatus}
-                key={probability}
+                key={id}
                 navigate={navigate}
               />
             );
