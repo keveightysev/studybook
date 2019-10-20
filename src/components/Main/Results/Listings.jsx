@@ -5,6 +5,7 @@ import axios from "axios";
 import { Context } from "../../../context";
 
 import ListingTable from "./ListingTable";
+import PageSelection from "./PageSelection";
 
 const Listings = ({ page, navigate }) => {
   const { dispatch } = useContext(Context);
@@ -36,6 +37,7 @@ const Listings = ({ page, navigate }) => {
     <section>
       <h2>1 - 10 of 12 Results</h2>
       <ListingTable navigate={navigate} />
+      <PageSelection navigate={navigate} />
     </section>
   );
 };
