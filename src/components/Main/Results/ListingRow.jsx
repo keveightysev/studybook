@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Status from "./Status";
+
 const ListingRow = ({
   condition,
   officialTitle,
@@ -19,7 +21,7 @@ const ListingRow = ({
           ? `${city}, ${country}`
           : `${city}, ${state}, ${country}`}
       </td>
-      <td>{overallStatus}</td>
+      <Status status={overallStatus} />
       <td>
         <button type="button">View Study</button>
       </td>

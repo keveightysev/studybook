@@ -20,7 +20,14 @@ export default Results;
 
 const ResultsPage = styled.main`
   display: flex;
+  justify-content: center;
   width: 95%;
+  min-height: calc(100vh - 191px);
   max-width: 1500px;
   margin: 0 auto;
+
+  > div {
+    height: 100%;
+    width: 75%;
+  }
 `;
