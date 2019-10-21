@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 import { Context } from "../../../context";
+import countryList from "./countryList";
+
+import Countries from "./Countries";
 
 const Form = ({ navigate }) => {
   const { state, dispatch } = useContext(Context);
-  const { condition, postalCode } = state;
+  const { condition, postalCode, country } = state;
 
   const handleChange = e => {
     dispatch({
@@ -15,10 +19,29 @@ const Form = ({ navigate }) => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    if (condition && postalCode) {
-      navigate("search/2");
+    if (condition && postalCode && country) {
+      const res = await axios.post(
+        `https://places-dsn.algolia.net/1/places/query`,
+        {
+          query: postalCode,
+          countries: [country.toLowerCase()],
+        },
+      );
+      const [result] = res.data.hits;
+      const { population, city, administrative } = result;
+      const citySearch = population > 250000 && city ? city : administrative[0];
+      const countrySearch = countryList.find(c => c.code === country).name;
+
+      const response = await axios.post(
+        `http://clinicaltrialadvisor.com/fetch_data_1`,
+        {
+          user_search: `${citySearch || countrySearch} ${condition}`,
+        },
+      );
+
+      console.log(response.data);
     }
   };
 
@@ -41,13 +64,14 @@ const Form = ({ navigate }) => {
           Postal Code
         </span>
         <input
-          type="number"
+          type="text"
           placeholder="Postal Code"
           id="postalCode"
           value={postalCode}
           onChange={e => handleChange(e)}
         />
       </label>
+      <Countries handleChange={handleChange} />
       <button type="submit">Find a Trial</button>
     </FormStyle>
   );

@@ -1,6 +1,7 @@
 export const initialState = {
   condition: "",
   postalCode: "",
+  country: "US",
   distance: "",
   age: "",
   isFetchingData: false,
