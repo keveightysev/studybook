@@ -102,6 +102,7 @@ const Table = styled.table`
     background: #223547;
     border: 1px solid #223547;
     transition: all 300ms ease;
+    min-width: 110px;
 
     &:hover {
       color: #223547;

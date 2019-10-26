@@ -37,6 +37,6 @@ const ResultsPage = styled.main`
 
   > div {
     height: 100%;
-    width: 75%;
+    width: 80%;
   }
 `;
