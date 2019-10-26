@@ -5,6 +5,7 @@ import { Router } from "@reach/router";
 import Landing from "./Landing";
 import Search from "./Search";
 import Results from "./Results";
+import Study from "./Study";
 
 const Main = () => {
   return (
@@ -13,6 +14,7 @@ const Main = () => {
         <Landing path="/" />
         <Search path="search/*" />
         <Results path="results/*" />
+        <Study path="study/:id" />
       </Router>
     </MainStyle>
   );

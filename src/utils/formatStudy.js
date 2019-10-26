@@ -40,10 +40,13 @@ const format = object => {
     }
   }
 
+  const govId = study.url.substr(-11);
+
   return {
     ...study,
     id,
     eligibility,
+    gov_id: govId,
     intervention: study.intervention.split("\n").filter(Boolean),
     lead_sponsor: study.lead_sponsor.split("\n").filter(Boolean),
     location: study.location.split("\n").filter(Boolean),
