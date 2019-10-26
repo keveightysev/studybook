@@ -9,6 +9,8 @@ const Status = ({ status }) => {
         return "#d89c1a";
       case "Enrolling by invitation":
         return "#1a6fd8";
+      case "Completed":
+        return "#C4C4C4";
       default:
         return "#1ad9c4";
     }

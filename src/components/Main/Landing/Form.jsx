@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import axios from "axios";
 
 import { Context } from "../../../context";
-import countryList from "./countryList";
 
 import Countries from "./Countries";
 
@@ -22,26 +20,7 @@ const Form = ({ navigate }) => {
   const handleSubmit = async e => {
     e.preventDefault();
     if (condition && postalCode && country) {
-      const res = await axios.post(
-        `https://places-dsn.algolia.net/1/places/query`,
-        {
-          query: postalCode,
-          countries: [country.toLowerCase()],
-        },
-      );
-      const [result] = res.data.hits;
-      const { population, city, administrative } = result;
-      const citySearch = population > 250000 && city ? city : administrative[0];
-      const countrySearch = countryList.find(c => c.code === country).name;
-
-      const response = await axios.post(
-        `http://clinicaltrialadvisor.com/fetch_data_1`,
-        {
-          user_search: `${citySearch || countrySearch} ${condition}`,
-        },
-      );
-
-      console.log(response.data);
+      navigate("/results/1");
     }
   };
 
@@ -80,30 +59,50 @@ const Form = ({ navigate }) => {
 export default Form;
 
 const FormStyle = styled.form`
-  width: 55%;
-  min-width: 500px;
+  width: 65%;
+  height: 140px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   margin-left: 75px;
+  position: relative;
 
-  @media (max-width: 1150px) {
-    flex-wrap: wrap;
+  @media (max-width: 400px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 80%;
+    margin: 0 auto;
   }
 
   label {
     font-size: 1.6rem;
+    @media (max-width: 800px) {
+      width: 45%;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 400px) {
+      width: 100%;
+    }
 
     &:first-of-type {
-      width: 60%;
+      width: 50%;
 
-      @media (max-width: 1150px) {
-        width: 75%;
+      @media (max-width: 800px) {
+        width: 100%;
       }
     }
 
-    &:last-of-type {
-      width: 18%;
+    &:nth-of-type(2) {
+      width: 15%;
       min-width: 120px;
+      @media (max-width: 800px) {
+        width: 48%;
+      }
+      @media (max-width: 400px) {
+        width: 100%;
+      }
     }
 
     input {
@@ -111,11 +110,10 @@ const FormStyle = styled.form`
       border: 1px solid #969797;
       border-radius: 20px;
       padding: 10px 0 10px 15px;
+      transition: all 300ms ease;
 
-      &[type="number"]::-webkit-inner-spin-button,
-      &[type="number"]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
+      &:focus {
+        border-color: #1ad9c4;
       }
     }
   }
@@ -130,13 +128,20 @@ const FormStyle = styled.form`
     padding: 10px;
     color: #fff;
     transition: all 300ms ease;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    @media (max-width: 800px) {
+      position: static;
+      width: 100%;
+    }
+
+    @media (max-width: 400px) {
+    }
 
     &:hover {
       background: #1ad9c4;
-    }
-
-    @media (max-width: 1150px) {
-      margin-top: 20px;
     }
   }
 `;

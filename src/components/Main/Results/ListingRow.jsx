@@ -10,7 +10,7 @@ const ListingRow = ({
   state,
   country,
   overallStatus,
-  key: id,
+  id,
   navigate,
 }) => {
   const handleClick = e => {
@@ -49,6 +49,6 @@ ListingRow.propTypes = {
   state: PropTypes.string.isRequired,
   country: PropTypes.string.isRequired,
   overallStatus: PropTypes.string.isRequired,
-  key: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   navigate: PropTypes.func,
 };

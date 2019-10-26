@@ -40,6 +40,7 @@ const ListingTable = ({ navigate }) => {
                 country={country}
                 overallStatus={overallStatus}
                 key={id}
+                id={id}
                 navigate={navigate}
               />
             );
