@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 import Progress from "./Progress";
 import TentativeResults from "./TentativeResults";
 
-import TravelDistance from "./TravelDistance";
+import Condition from "./Condition";
+import Gender from "./Gender";
 import Age from "./Age";
 
 const Search = ({ "*": step, navigate }) => {
@@ -14,7 +15,8 @@ const Search = ({ "*": step, navigate }) => {
     <SearchStyle>
       <Progress step={step} navigate={navigate} />
       <Router>
-        <TravelDistance path="2" />
+        <Condition path="1" />
+        <Gender path="2" />
         <Age path="3" />
       </Router>
       <TentativeResults step={step} navigate={navigate} />

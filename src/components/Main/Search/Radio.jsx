@@ -9,32 +9,32 @@ const Radio = ({ id, value }) => {
 
   const radio = useRef(null);
 
-  const { distance } = state;
+  const { gender } = state;
 
   useEffect(() => {
-    if (distance === value) {
+    if (gender === value) {
       radio.current.checked = true;
     }
-  }, [distance, value]);
+  }, [gender, value]);
 
   const handleClick = e => {
     if (e.target.name) {
-      dispatch({ type: "UPDATE_INPUT", payload: { name: "distance", value } });
+      dispatch({ type: "UPDATE_INPUT", payload: { name: "gender", value } });
     }
   };
 
   return (
-    <RadioButton htmlFor={id} name="distance" onClick={e => handleClick(e)}>
+    <RadioButton htmlFor={id} name="gender" onClick={e => handleClick(e)}>
       <input
         type="radio"
-        name="distance"
+        name="gender"
         value={value}
         id={id}
         aria-label={`${value} miles`}
         ref={radio}
       />
       <div className="radio" role="presentation" />
-      {value === "any" ? "Any distance" : `${value} miles`}
+      {value.charAt(0).toUpperCase() + value.slice(1, value.length)}
     </RadioButton>
   );
 };

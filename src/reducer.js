@@ -2,7 +2,7 @@ export const initialState = {
   condition: "",
   postalCode: "",
   country: "US",
-  distance: "",
+  gender: "",
   age: "",
   isFetchingData: false,
   error: false,

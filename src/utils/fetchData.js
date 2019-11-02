@@ -1,8 +1,9 @@
 import axios from "axios";
 
-import { countryList, format } from "./index";
+import countryList from "./countryList";
+import format from "./formatStudy";
 
-const fetchData = async (condition, postalCode, country, page) => {
+const fetchData = async (condition, postalCode, country, page, gender, age) => {
   try {
     const res = await axios.post(
       `https://places-dsn.algolia.net/1/places/query`,
@@ -19,10 +20,10 @@ const fetchData = async (condition, postalCode, country, page) => {
     const response = await axios.post(
       `http://clinicaltrialadvisor.com/fetch_search`,
       {
-        user_search: `${citySearch} ${countrySearch} ${condition}`,
+        user_search: `${citySearch || countrySearch} ${condition}`,
         page,
-        gender: "all",
-        age: 32,
+        gender: gender || "all",
+        age: age || 32,
       },
     );
 

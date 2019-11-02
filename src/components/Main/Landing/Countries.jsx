@@ -4,9 +4,9 @@ import styled from "styled-components";
 
 import countryList from "../../../utils/countryList";
 
-const Countries = ({ handleChange }) => {
+const Countries = ({ handleChange, fromSearchPage }) => {
   return (
-    <Select htmlFor="country">
+    <Select htmlFor="country" fromSearchPage={fromSearchPage}>
       <span className="hidden" role="definition">
         Country
       </span>
@@ -23,12 +23,17 @@ const Countries = ({ handleChange }) => {
 
 export default Countries;
 
+Countries.defaultProps = {
+  fromSearchPage: false,
+};
+
 Countries.propTypes = {
   handleChange: PropTypes.func.isRequired,
+  fromSearchPage: PropTypes.bool,
 };
 
 const Select = styled.label`
-  width: 25%;
+  width: ${({ fromSearchPage }) => (fromSearchPage ? "100%" : "25%")};
 
   select {
     border: 1px solid #969797;

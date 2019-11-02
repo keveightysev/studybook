@@ -3,23 +3,21 @@ import styled from "styled-components";
 
 import Radio from "./Radio";
 
-const TravelDistance = () => {
+const Gender = () => {
   return (
-    <Travel>
+    <ChooseGender>
       <h2>How far are you willing to travel?</h2>
       <form>
-        <Radio id="twenty" value="20" />
-        <Radio id="fifty" value="50" />
-        <Radio id="hundred" value="100" />
-        <Radio id="anyDistance" value="any" />
+        <Radio id="male" value="male" />
+        <Radio id="female" value="female" />
       </form>
-    </Travel>
+    </ChooseGender>
   );
 };
 
-export default TravelDistance;
+export default Gender;
 
-const Travel = styled.section`
+const ChooseGender = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
