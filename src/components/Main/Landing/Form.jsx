@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 
 import { Context } from "../../../context";
 
+import fetchData from "../../../utils/fetchData";
+
 import Countries from "./Countries";
 
 const Form = ({ navigate }) => {
@@ -20,7 +22,20 @@ const Form = ({ navigate }) => {
   const handleSubmit = async e => {
     e.preventDefault();
     if (condition && postalCode && country) {
-      navigate("/results/1");
+      dispatch({ type: "DATA_FETCH_START" });
+      const { status, studies, totalResults } = await fetchData(
+        condition,
+        postalCode,
+        country,
+        1,
+      );
+      if (status === 200) {
+        dispatch({
+          type: "DATA_FETCH_SUCCESS",
+          payload: { studies, totalResults },
+        });
+      }
+      navigate("/search/2");
     }
   };
 

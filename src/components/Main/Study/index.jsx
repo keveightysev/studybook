@@ -11,9 +11,9 @@ const Study = ({ id }) => {
 
   useEffect(() => {
     const thisStudy = data.find(stud => stud.id === Number(id));
-    console.log(thisStudy);
     setStudy(() => thisStudy);
   }, [id, data]);
+
   return (
     <>
       <h2>{study && study.overall_status}</h2>

@@ -7,6 +7,7 @@ export const initialState = {
   isFetchingData: false,
   error: false,
   data: [],
+  totalResults: 0,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -22,18 +23,21 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFetchingData: true,
+        data: [],
       };
     case "DATA_FETCH_SUCCESS":
       return {
         ...state,
         isFetchingData: false,
-        data: payload,
+        data: payload.studies,
+        totalResults: payload.totalResults,
       };
     case "DATA_FETCH_FAILURE":
       return {
         ...state,
         isFetchingData: false,
         error: payload,
+        data: [],
       };
     default:
       return state;
