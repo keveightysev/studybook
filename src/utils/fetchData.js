@@ -18,7 +18,7 @@ const fetchData = async (condition, postalCode, country, page, gender, age) => {
     const countrySearch = countryList.find(c => c.code === country).name;
 
     const response = await axios.post(
-      `http://clinicaltrialadvisor.com/fetch_search`,
+      `https://clinicaltrialadvisor.com/fetch_search`,
       {
         user_search: `${citySearch || countrySearch} ${condition}`,
         page,
