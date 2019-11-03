@@ -6,7 +6,7 @@ import Radio from "./Radio";
 const Gender = () => {
   return (
     <ChooseGender>
-      <h2>How far are you willing to travel?</h2>
+      <h2>Please choose your gender</h2>
       <form>
         <Radio id="male" value="male" />
         <Radio id="female" value="female" />
