@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
 
 import Global from "./styles/Global";
+
+import { Context } from "./context";
 
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 
 function App() {
+  const { dispatch } = useContext(Context);
+  useEffect(() => {
+    const history = localStorage.getItem("studies");
+    if (history) {
+      dispatch({ type: "LOAD_LOCAL", payload: JSON.parse(history) });
+    }
+  }, [dispatch]);
   return (
     <>
       <Global />

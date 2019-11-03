@@ -3,24 +3,24 @@ import PropTypes from "prop-types";
 
 import Status from "./Status";
 
-const ListingRow = ({
-  condition,
-  officialTitle,
-  city,
-  state,
-  country,
-  overallStatus,
-  id,
-  navigate,
-}) => {
+const ListingRow = ({ listing, navigate }) => {
+  const {
+    gov_id: govId,
+    condition,
+    brief_title: briefTitle,
+    state,
+    city,
+    country,
+    overall_status: overallStatus,
+  } = listing;
   const handleClick = e => {
     e.preventDefault();
-    navigate(`/study/${id}`);
+    navigate(`/study/${govId}`);
   };
   return (
     <tr>
       <td>{condition}</td>
-      <td>{officialTitle}</td>
+      <td>{briefTitle}</td>
       <td>
         {state === "Missing"
           ? `${city}, ${country}`
@@ -43,12 +43,14 @@ ListingRow.defaultProps = {
 };
 
 ListingRow.propTypes = {
-  condition: PropTypes.string.isRequired,
-  officialTitle: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired,
-  overallStatus: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
   navigate: PropTypes.func,
+  listing: PropTypes.shape({
+    gov_id: PropTypes.string,
+    condition: PropTypes.string,
+    brief_title: PropTypes.string,
+    state: PropTypes.string,
+    city: PropTypes.string,
+    country: PropTypes.string,
+    overall_status: PropTypes.string,
+  }).isRequired,
 };

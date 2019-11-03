@@ -1,54 +1,58 @@
 import React, { useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 import styled from "styled-components";
 
 import { Context } from "../../../context";
-import countryList from "../../../utils/countryList";
-import format from "../../../utils/formatStudy";
+import { fetchData } from "../../../utils";
 
 import ListingTable from "./ListingTable";
 import PageSelection from "./PageSelection";
 
 const Listings = ({ page, navigate }) => {
   const { state, dispatch } = useContext(Context);
-  const { postalCode, country, condition } = state;
+  const {
+    postalCode,
+    country,
+    condition,
+    gender,
+    age,
+    totalResults: results,
+    data,
+  } = state;
   useEffect(() => {
-    const fetchData = async pageNo => {
+    const fetch = async () => {
       dispatch({ type: "DATA_FETCH_START" });
-      try {
-        const res = await axios.post(
-          `https://places-dsn.algolia.net/1/places/query`,
-          {
-            query: postalCode,
-            countries: [country.toLowerCase()],
-          },
-        );
-        const [result] = res.data.hits;
-        const { population, city, administrative } = result;
-        const citySearch =
-          population > 250000 && city ? city : administrative[0];
-        const countrySearch = countryList.find(c => c.code === country).name;
-
-        const response = await axios.post(
-          `http://clinicaltrialadvisor.com/fetch_data_${pageNo}`,
-          {
-            user_search: `${citySearch || countrySearch} ${condition}`,
-          },
-        );
-
-        const studies = response.data.map(study => format(study));
-
-        dispatch({ type: "DATA_FETCH_SUCCESS", payload: studies });
-      } catch (err) {
-        dispatch({ type: "DATA_FETCH_FAILURE", payload: err });
+      const { status, studies, totalResults } = await fetchData(
+        condition,
+        postalCode,
+        country,
+        Number(page),
+        gender,
+        age,
+      );
+      if (status === 200) {
+        dispatch({
+          type: "DATA_FETCH_SUCCESS",
+          payload: { studies, totalResults },
+        });
+      } else {
+        dispatch({
+          type: "DATA_FETCH_FAILURE",
+          payload: { studies, totalResults },
+        });
       }
     };
-    fetchData(page);
-  }, [dispatch, page, condition, country, postalCode]);
+    fetch();
+  }, [dispatch, page, condition, country, postalCode, age, gender]);
   return (
     <ListingsView>
-      <h2>1 - 10 of 12 Results</h2>
+      <h2>
+        1 -&nbsp;
+        {data.length}
+        &nbsp;of&nbsp;
+        {results}
+        &nbsp;Results
+      </h2>
       <ListingTable navigate={navigate} />
       <PageSelection page={page} />
     </ListingsView>
@@ -69,6 +73,7 @@ Listings.propTypes = {
 
 const ListingsView = styled.section`
   width: 100%;
+  min-height: calc(100vh - 191px);
   padding: 0 20px;
 
   h2 {

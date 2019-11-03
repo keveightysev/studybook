@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+import { Context } from "../../../context";
+
 const LeftColumn = ({ navigate }) => {
+  const { state } = useContext(Context);
+
+  const { totalResults } = state;
+
   const handleClick = e => {
     e.preventDefault();
     navigate("/search/1");
   };
+
   return (
     <Column>
-      <h2>12</h2>
+      <h2>{totalResults}</h2>
       <p>trials found</p>
       <button type="button" onClick={e => handleClick(e)}>
         Try Another Search

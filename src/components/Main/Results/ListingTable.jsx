@@ -22,27 +22,9 @@ const ListingTable = ({ navigate }) => {
       <tbody>
         {data &&
           data.map(listing => {
-            const {
-              condition,
-              official_title: officialTitle,
-              city,
-              state: st,
-              country,
-              overall_status: overallStatus,
-              id,
-            } = listing;
+            const { gov_id: govId } = listing;
             return (
-              <ListingRow
-                condition={condition}
-                officialTitle={officialTitle}
-                city={city}
-                state={st}
-                country={country}
-                overallStatus={overallStatus}
-                key={id}
-                id={id}
-                navigate={navigate}
-              />
+              <ListingRow key={govId} listing={listing} navigate={navigate} />
             );
           })}
       </tbody>
@@ -61,7 +43,7 @@ ListingTable.propTypes = {
 };
 
 const Table = styled.table`
-  min-height: calc(100vh - 50px);
+  height: auto;
   th {
     text-align: left;
     padding: 20px 0 10px;
@@ -77,6 +59,7 @@ const Table = styled.table`
   td {
     padding: 20px 20px 20px 0;
     vertical-align: middle;
+    height: 75px;
 
     &:first-of-type {
       font-size: 1rem;

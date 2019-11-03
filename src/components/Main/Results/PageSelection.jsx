@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import styled from "styled-components";
@@ -9,20 +9,25 @@ import {
   FaAngleDoubleRight,
 } from "react-icons/fa";
 
+import { Context } from "../../../context";
+
 const PageSelection = ({ page }) => {
   const [linkArray, setLinkArray] = useState([]);
 
+  const { state } = useContext(Context);
+  const { totalResults } = state;
+
   useEffect(() => {
-    const results = 120;
+    const results = Number(totalResults);
     const links = new Array(Math.ceil(results / 12));
     for (let i = 0; i < links.length; i += 1) {
       links[i] = i + 1;
     }
     setLinkArray(links);
-  }, []);
+  }, [totalResults]);
 
   return (
-    linkArray && (
+    linkArray.length > 10 && (
       <PageLinks>
         {page !== "1" && (
           <>

@@ -1,13 +1,5 @@
 const format = object => {
   const study = { ...object };
-  delete study.criteria;
-  delete study.facility;
-  delete study.textblock;
-  delete study.clinical_study;
-  delete study.gender;
-  delete study["Unnamed: 0.1"];
-  const id = study["Unnamed: 0"];
-  delete study["Unnamed: 0"];
 
   const eligibilityArr = study.eligibility.split("\n").filter(Boolean);
   const eligibility = {};
@@ -44,7 +36,6 @@ const format = object => {
 
   return {
     ...study,
-    id,
     eligibility,
     gov_id: govId,
     intervention: study.intervention.split("\n").filter(Boolean),

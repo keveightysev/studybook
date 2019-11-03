@@ -12,7 +12,7 @@ export const initialState = {
 
 export const reducer = (state = initialState, action) => {
   const { type, payload } = action;
-
+  let newState;
   switch (type) {
     case "UPDATE_INPUT":
       return {
@@ -26,18 +26,24 @@ export const reducer = (state = initialState, action) => {
         data: [],
       };
     case "DATA_FETCH_SUCCESS":
-      return {
+      newState = {
         ...state,
         isFetchingData: false,
         data: payload.studies,
         totalResults: payload.totalResults,
       };
+      localStorage.setItem("studies", JSON.stringify(newState));
+      return newState;
     case "DATA_FETCH_FAILURE":
       return {
         ...state,
         isFetchingData: false,
         error: payload,
         data: [],
+      };
+    case "LOAD_LOCAL":
+      return {
+        ...payload,
       };
     default:
       return state;
