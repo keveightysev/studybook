@@ -53,7 +53,7 @@ const Listings = ({ page, navigate }) => {
         {results}
         &nbsp;Results
       </h2>
-      <ListingTable navigate={navigate} />
+      <ListingTable navigate={navigate} page={page} />
       <PageSelection page={page} />
     </ListingsView>
   );

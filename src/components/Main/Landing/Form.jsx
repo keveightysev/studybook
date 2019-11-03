@@ -34,6 +34,11 @@ const Form = ({ navigate }) => {
           type: "DATA_FETCH_SUCCESS",
           payload: { studies, totalResults },
         });
+      } else {
+        dispatch({
+          type: "DATA_FETCH_FAILURE",
+          payload: { studies, totalResults },
+        });
       }
       navigate("/search/2");
     }

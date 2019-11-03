@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Status from "./Status";
 
-const ListingRow = ({ listing, navigate }) => {
+const ListingRow = ({ listing, navigate, page }) => {
   const {
     gov_id: govId,
     condition,
@@ -15,7 +15,7 @@ const ListingRow = ({ listing, navigate }) => {
   } = listing;
   const handleClick = e => {
     e.preventDefault();
-    navigate(`/study/${govId}`);
+    navigate(`/study/${govId}`, { searchPage: page });
   };
   return (
     <tr>
@@ -40,6 +40,7 @@ export default ListingRow;
 
 ListingRow.defaultProps = {
   navigate: null,
+  page: "1",
 };
 
 ListingRow.propTypes = {
@@ -53,4 +54,5 @@ ListingRow.propTypes = {
     country: PropTypes.string,
     overall_status: PropTypes.string,
   }).isRequired,
+  page: PropTypes.string,
 };

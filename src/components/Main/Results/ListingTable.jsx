@@ -6,7 +6,7 @@ import { Context } from "../../../context";
 
 import ListingRow from "./ListingRow";
 
-const ListingTable = ({ navigate }) => {
+const ListingTable = ({ navigate, page }) => {
   const { state } = useContext(Context);
   const { data } = state;
   return (
@@ -24,7 +24,12 @@ const ListingTable = ({ navigate }) => {
           data.map(listing => {
             const { gov_id: govId } = listing;
             return (
-              <ListingRow key={govId} listing={listing} navigate={navigate} />
+              <ListingRow
+                key={govId}
+                listing={listing}
+                navigate={navigate}
+                page={page}
+              />
             );
           })}
       </tbody>
@@ -36,10 +41,12 @@ export default ListingTable;
 
 ListingTable.defaultProps = {
   navigate: null,
+  page: "1",
 };
 
 ListingTable.propTypes = {
   navigate: PropTypes.func,
+  page: PropTypes.string,
 };
 
 const Table = styled.table`
